@@ -19,6 +19,8 @@ fs.readFile("wordBank.txt", (err,r) => {
     rWord = r.toString().split("\r\n");
 });
 
+
+
 setTimeout(() => {
     game.setWord();
     message();
@@ -36,6 +38,8 @@ const gameStart = () => {
     ]).then((r) => {
         if(game.wordpro != game.word){
             game.display(r.letter);
+            cl(game.wordpro);
+            cl(game.word);
             if(game.wordpro === game.word) {
                 return cl(hr + "\n\nYOU WIN!!!!!\n\n" + hr);
             }
@@ -57,9 +61,12 @@ const gameStart = () => {
 
 
 let game = {
+    wordFormatter: (w) => {
+        return w.trim().split(" ").join("").toLowerCase();
+    },
     word: "",
     setWord: () => {
-        game.word =  rWord[rand(rWord.length)];
+        game.word =  game.wordFormatter(rWord[rand(rWord.length)]);
     },
     display: (ul) => {
         let test = new iWord(game.word);
@@ -74,3 +81,6 @@ let message = () => {
     cl("Don't forget, if you want to exit just type the word exit\n");
     cl(hr);
 }
+
+
+
