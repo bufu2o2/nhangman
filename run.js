@@ -38,8 +38,8 @@ const gameStart = () => {
     ]).then((r) => {
         if(game.wordpro != game.word){
             game.display(r.letter);
-            cl(game.wordpro);
-            cl(game.word);
+            //cl(game.wordpro);
+            //cl(game.word);
             if(game.wordpro === game.word) {
                 return cl(hr + "\n\nYOU WIN!!!!!\n\n" + hr);
             }
